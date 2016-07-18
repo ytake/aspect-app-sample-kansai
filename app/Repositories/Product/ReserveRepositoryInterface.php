@@ -8,9 +8,14 @@ namespace App\Repositories\Product;
 interface ReserveRepositoryInterface
 {
     /**
+     * @param int $id
+     *
      * @return int
      */
-    public function getQuantity() : int;
+    public function quantity(int $id) : int;
 
-    public function createReserve();
+    /**
+     * @return bool
+     */
+    public function createReserve() : bool;
 }

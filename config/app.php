@@ -155,6 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\DeferServiceProvider::class,
         // added AspectServiceProvider
         Ytake\LaravelAspect\AspectServiceProvider::class,
         // added Artisan Command

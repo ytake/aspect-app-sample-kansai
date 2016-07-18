@@ -2,13 +2,13 @@
 
 namespace App\Aspect\PointCut;
 
+use Ray\Aop\Pointcut;
+use Ray\Aop\Matcher;
 use App\Repositories\CancelRepositoryInterface;
 use App\Services\ProductReservation;
 use App\Services\ProductWaiter;
-use Ray\Aop\Pointcut;
-use Ray\Aop\Matcher;
 use App\Annotation\WaitingList;
-use App\Aspect\Advice\AppendWaitingList;
+use App\Aspect\Interceptor\WaitingListInterceptor;
 use Illuminate\Contracts\Container\Container;
 use Ytake\LaravelAspect\PointCut\CommonPointCut;
 use Ytake\LaravelAspect\PointCut\PointCutable;
@@ -28,7 +28,7 @@ class WaitingListPointCut extends CommonPointCut implements PointCutable
      */
     public function configure(Container $app) : Pointcut
     {
-        $advice = new AppendWaitingList(
+        $advice = new WaitingListInterceptor(
             new ProductWaiter($app->make(CancelRepositoryInterface::class))
         );
         $this->setInterceptor($advice);
@@ -38,6 +38,7 @@ class WaitingListPointCut extends CommonPointCut implements PointCutable
 
     /**
      * @param Container $app
+     *
      * @return PointCut
      */
     protected function withAnnotatedReserveInterceptor(Container $app) : Pointcut

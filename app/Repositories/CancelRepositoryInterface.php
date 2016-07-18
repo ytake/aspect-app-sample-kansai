@@ -11,5 +11,5 @@ interface CancelRepositoryInterface
      * @param $id
      * @return bool
      */
-    public function appendList($id);
+    public function appendList($id) : bool;
 }

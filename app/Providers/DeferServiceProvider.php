@@ -2,11 +2,18 @@
 
 namespace App\Providers;
 
-use App\Repositories\CancelRepository;
-use App\Repositories\CancelRepositoryInterface;
+use App\Repositories\{
+    CancelRepository,
+    CancelRepositoryInterface,
+    PaymentRepository,
+    PaymentRepositoryInterface,
+    Product\ReserveRepository,
+    Product\ReserveRepositoryInterface,
+    PointRepository,
+    PointRepositoryInterface
+};
+use App\Services\PointBalance;
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\Product\ReserveRepository;
-use App\Repositories\Product\ReserveRepositoryInterface;
 
 /**
  * Class DeferServiceProvider
@@ -23,6 +30,9 @@ class DeferServiceProvider extends ServiceProvider
     {
         $this->app->bind(CancelRepositoryInterface::class, CancelRepository::class);
         $this->app->bind(ReserveRepositoryInterface::class, ReserveRepository::class);
+        $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
+        $this->app->bind(PointRepositoryInterface::class, PointRepository::class);
+        $this->app->singleton(PointBalance::class, PointBalance::class);
     }
 
     /**
@@ -31,8 +41,11 @@ class DeferServiceProvider extends ServiceProvider
     public function provides() : array
     {
         return [
+            PointRepositoryInterface::class,
             CancelRepositoryInterface::class,
             ReserveRepositoryInterface::class,
+            PaymentRepositoryInterface::class,
+            PointBalance::class,
         ];
     }
 }

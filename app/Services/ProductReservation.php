@@ -15,6 +15,7 @@ class ProductReservation
 
     /**
      * ProductReservation constructor.
+     *
      * @param ReserveRepositoryInterface $repository
      */
     public function __construct(ReserveRepositoryInterface $repository)
@@ -27,12 +28,14 @@ class ProductReservation
      * そうでなければエラーをスロー
      *
      * @param int $id
+     *
+     * @return bool
      * @throws NoStockException
      */
     public function makeReservation(int $id)
     {
-        if ($this->repository->getQuantity()) {
-            $this->repository->createReserve();
+        if ($this->repository->quantity($id)) {
+            return $this->repository->createReserve();
         }
 
         throw new NoStockException;

@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Modules\LoggableModule;
+use App\Modules\EarnPointModule;
+use App\Modules\PaymentPointModule;
 use App\Modules\WaitingListModule;
+use App\Modules\LogExceptionsModule;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
         /** @var \Ytake\LaravelAspect\AspectManager $aspect */
         $aspect = $this->app['aspect.manager'];
         $aspect->register(WaitingListModule::class);
+        $aspect->register(LogExceptionsModule::class);
+        $aspect->register(LoggableModule::class);
+        $aspect->register(PaymentPointModule::class);
+        $aspect->register(EarnPointModule::class);
         $aspect->dispatch();
     }
 

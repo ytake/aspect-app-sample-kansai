@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Product\Aspect;
 
 use Illuminate\Http\JsonResponse;
-use App\Exceptions\NoStockException;
 use App\Http\Controllers\Controller;
-use App\Services\ProductReservation;
+use App\Services\Aspect\ProductReservation;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -13,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ReserveController extends Controller
 {
-    /** @var ProductReservation  */
+    /** @var ProductReservation */
     protected $reservation;
 
     /**
@@ -31,11 +30,8 @@ class ReserveController extends Controller
      */
     public function reserve() : Response
     {
-        try {
-            $result = $this->reservation->makeReservation(1);
-        } catch (NoStockException $e) {
-            $result = false;
-        }
-        return new JsonResponse(['reserve' => $result]);
+        return new JsonResponse([
+            'reserve' => $this->reservation->makeReservation(1)
+        ]);
     }
 }

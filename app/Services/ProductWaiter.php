@@ -9,11 +9,12 @@ use App\Repositories\CancelRepositoryInterface;
  */
 class ProductWaiter
 {
-    /** @var CancelRepositoryInterface  */
+    /** @var CancelRepositoryInterface */
     protected $repository;
 
     /**
      * ProductWaiter constructor.
+     *
      * @param CancelRepositoryInterface $repository
      */
     public function __construct(CancelRepositoryInterface $repository)
@@ -22,10 +23,12 @@ class ProductWaiter
     }
 
     /**
+     * @param int $id
      *
+     * @return bool
      */
-    public function append()
+    public function append(int $id) : bool
     {
-        $this->repository->appendList(1);
+        return $this->repository->appendList($id);
     }
 }

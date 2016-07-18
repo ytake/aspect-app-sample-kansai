@@ -5,18 +5,25 @@ namespace App\Repositories\Product;
 /**
  * Class ReserveRepository
  */
-class ReserveRepository
+class ReserveRepository implements ReserveRepositoryInterface
 {
     /**
+     * @param int $id
+     *
      * @return int
      */
-    public function getQuantity() : int
+    public function quantity(int $id) : int
     {
         return 0;
     }
 
-    public function createReserve()
+    /**
+     * 予約データ登録
+     *
+     * @return bool
+     */
+    public function createReserve() : bool
     {
-        // nothing
+        return true;
     }
 }

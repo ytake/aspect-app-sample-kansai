@@ -2,8 +2,8 @@
 
 namespace App\Modules;
 
-use App\Aspect\PointCut\WaitingListPointCut;
 use App\Services\Aspect\ProductReservation;
+use App\Aspect\PointCut\WaitingListPointCut;
 use Ytake\LaravelAspect\Modules\AspectModule;
 
 /**

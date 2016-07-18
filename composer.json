@@ -1,5 +1,5 @@
 {
-  "name": "laravel/laravel",
+  "name": "ytake/aspect-app-sample-kansai",
   "description": "The Laravel Framework.",
   "keywords": [
     "framework",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": ">=5.5.9",
+    "php": ">=7.0.0",
     "laravel/framework": "5.2.*",
     "ytake/laravel-aspect": "^1.2"
   },

@@ -2,6 +2,7 @@
 
 namespace App\Modules;
 
+use App\Services\Aspect\ProductReservation;
 use Ytake\LaravelAspect\Modules\LogExceptionsModule as PackageLogExceptionsModule;
 
 /**
@@ -11,7 +12,6 @@ class LogExceptionsModule extends PackageLogExceptionsModule
 {
     /** @var array */
     protected $classes = [
-        // example
-        // \App\Services\AcmeService::class
+        ProductReservation::class,
     ];
 }
