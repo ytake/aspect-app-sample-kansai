@@ -30,7 +30,6 @@ class PaymentController extends Controller
      */
     public function purchase() : Response
     {
-        dd(\App\Services\Aspect\ProductPayment::class);
         return new JsonResponse([
             'purchase' => $this->payment->purchase(1)
         ]);

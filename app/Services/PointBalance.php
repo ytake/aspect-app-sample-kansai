@@ -9,7 +9,7 @@ use App\Repositories\PointRepositoryInterface;
  */
 class PointBalance
 {
-    /** @var PointRepositoryInterface  */
+    /** @var PointRepositoryInterface */
     protected $repository;
 
     /**
@@ -49,6 +49,7 @@ class PointBalance
      */
     public function point(int $point)
     {
+        event('point.append', [['message' => 'append point']]);
         return $this->repository->appendPoint($point);
     }
 }
